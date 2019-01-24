@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">Card List</h1>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Team</td>
+        <td>More Info</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let card of cards">
+        <td>{{card.id}}</td>
+        <td>{{card.firstName}}</td>
+        <td>{{card.lastName}}</td>
+        <td>{{card.teamCity}} {{card.teamNickname}}</td>
+        <td><button class="btn btn-primary" [routerLink]="['/card/', card.id]">Details</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
