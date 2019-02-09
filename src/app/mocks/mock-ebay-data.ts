@@ -37,8 +37,8 @@ export const EBAYDATA: EbayInterface[] = [
         {
             bestOfferEnabled: false,
             buyItNowAvailable: false,
-            startTime: new Date(2019-01-17T01:12:39.000Z),
-            endTime: new Date(2019-01-24T01:12:39.000Z),
+            //startTime: new Date(2019-01-17T01:12:39.000Z),
+            //endTime: new Date(2019-01-24T01:12:39.000Z),
             listingType: 'Auction',
             gift: false,
             watchCount: 1,

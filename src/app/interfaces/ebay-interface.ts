@@ -30,8 +30,8 @@ export interface EbayInterface {
     listingInfo: {
         bestOfferEnabled: boolean;
         buyItNowAvailable: boolean;
-        startTime: Date;
-        endTime: Date;
+        //startTime: Date;
+        //endTime: Date;
         listingType: string;
         gift: boolean;
         watchCount: number;

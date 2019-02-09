@@ -1,6 +1,11 @@
 <div class="container">
-  <div class="row">
-    <h1 class="text-center">Card List</h1>
+  <h1 class="text-center">Card List</h1>
+  <div>
+    <h5>Search For Card</h5>
+    <label for="Name">Name:</label>
+    <input type="text">
+    <label for="Team">Team:</label>
+    <input type="text">
   </div>
   <table class="table table-striped">
     <thead>
@@ -14,11 +19,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let card of cards">
-        <td>{{card.id}}</td>
-        <td>{{card.firstName}}</td>
-        <td>{{card.lastName}}</td>
-        <td>{{card.teamCity}} {{card.teamNickname}}</td>
-        <td><button class="btn btn-primary" [routerLink]="['/card/', card.id]">Details</button></td>
+        <td class="align-middle">{{card.id}}</td>
+        <td class="align-middle">{{card.firstName}}</td>
+        <td class="align-middle">{{card.lastName}}</td>
+        <td class="align-middle">{{card.teamCity}} {{card.teamNickname}}</td>
+        <td class="align-middle"><button class="btn btn-primary" [routerLink]="['/card/', card.id]">Details</button></td>
       </tr>
     </tbody>
   </table>
