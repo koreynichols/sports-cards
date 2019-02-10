@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { CardService } from '../services/card.service';
 import { CardInterface } from '../interfaces/card-interface';
 
+import { SPORTS } from './../mocks/mock-sports';
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -11,6 +13,7 @@ import { CardInterface } from '../interfaces/card-interface';
 export class CardComponent implements OnInit {
 
   cards: CardInterface[];
+  sports = SPORTS;
 
   constructor(private cardService: CardService) { }
 
@@ -21,5 +24,4 @@ export class CardComponent implements OnInit {
   ngOnInit() {
     this.getCards();
   }
-
 }
