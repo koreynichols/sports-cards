@@ -8,16 +8,16 @@
       </div>
       <div class="form-group col-md-3">
           <label for="inputSport">Sport</label>
-          <select id="inputSport" class="form-control">
+          <select id="inputSport" class="form-control" [(ngModel)]="selectedSportMod" name="selectedSport">
             <option selected>All</option>
-            <option *ngFor="let sport of sports">{{sport.sport}}</option>
+            <option *ngFor="let sport of sports">{{ sport.sport }}</option>
           </select>
       </div>
       <div class="form-group col-md-3">
           <label for="inputTeam">Team</label>
-          <select id="inputTeam" class="form-control" disabled>
+          <select id="inputTeam" class="form-control" [disabled]="isDisabled">
             <option selected>All</option>
-            <option *ngFor="let team of teams">{{team.teamCity}} {{team.teamNickname</option>
+            <option *ngFor="let team of teams">{{ team.teamCity }} {{ team.teamNickname }}</option>
           </select>
       </div>
     </div>
