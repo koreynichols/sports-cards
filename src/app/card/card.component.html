@@ -1,5 +1,8 @@
 <div class="container">
   <h1 class="text-center">Card List</h1>
+  <div class="row">
+    <button class="btn btn-primary mx-auto btn-lg" [routerLink]="['/create/']">New Card</button>
+  </div>
   <form>
    <div class="form-row">
       <div class="form-group col-md-6">
@@ -58,7 +61,7 @@
         <td class="align-middle">{{card.firstName}}</td>
         <td class="align-middle">{{card.lastName}}</td>
         <td class="align-middle">{{card.teamCity}} {{card.teamNickname}}</td>
-        <td class="align-middle"><button class="btn btn-primary" [routerLink]="['/card/', card.id]">Details</button></td>
+        <td class="align-middle"><button class="btn btn-info" [routerLink]="['/card/', card.id]">Details</button></td>
       </tr>
     </tbody>
   </table>

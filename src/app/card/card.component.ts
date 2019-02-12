@@ -18,7 +18,8 @@ export class CardComponent implements OnInit {
   sports = SPORTS;
   teams = TEAMS;
   isDisabled: Boolean = true;
-  selectedSport: String = '';
+  selectedSport: String = 'All';
+  selectedTeam: String = 'All';
 
   constructor(private cardService: CardService) { }
 
@@ -38,9 +39,11 @@ export class CardComponent implements OnInit {
 
   getTeamNames(sport) {
     if (sport === 'All') {
+      this.selectedTeam = 'All';
       this.isDisabled = true;
     } else {
       this.isDisabled = false;
+      this.teams = TEAMS.filter(team => team.sport === this.selectedSport);
     }
   }
 

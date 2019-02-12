@@ -196,7 +196,7 @@ export const TEAMS: Teams[] = [
     {
         id: 33,
         sport: 'Basketball',
-        teamCity: 'Brookolyn',
+        teamCity: 'Brooklyn',
         teamNickname: 'Nets'
     },
     {

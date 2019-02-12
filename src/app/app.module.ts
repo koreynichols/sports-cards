@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CardComponent } from './card/card.component';
 import { CardDetailComponent } from './card-detail/card-detail.component';
+import { CreateCardComponent } from './create-card/create-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    CardDetailComponent
+    CardDetailComponent,
+    CreateCardComponent
   ],
   imports: [
     BrowserModule,
