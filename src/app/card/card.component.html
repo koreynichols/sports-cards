@@ -1,13 +1,13 @@
 <div class="container">
   <h1 class="text-center">Card List</h1>
   <div class="row">
-    <button class="btn btn-primary mx-auto btn-lg" [routerLink]="['/create/']">New Card</button>
+    <button class="btn btn-primary mx-auto btn-lg btn-block" [routerLink]="['/create/']">New Card</button>
   </div>
-  <form>
+  <form (submit)="filterCards()">
    <div class="form-row">
       <div class="form-group col-md-6">
         <label for="Name">Player Name</label>
-        <input type="text" class="form-control" id="Name" placeholder="Name">
+        <input type="text" class="form-control" id="Name" [(ngModel)]="searchName" name="searchName" placeholder="Name">
       </div>
       <div class="form-group col-md-3">
           <label for="inputSport">Sport</label>
@@ -18,7 +18,7 @@
       </div>
       <div class="form-group col-md-3">
           <label for="inputTeam">Team</label>
-          <select id="inputTeam" class="form-control" [disabled]="isDisabled">
+          <select id="inputTeam" class="form-control" [(ngModel)]="selectedTeamMod" name="selectedTeam" [disabled]="isDisabled">
             <option selected>All</option>
             <option *ngFor="let team of teams">{{ team.teamCity }} {{ team.teamNickname }}</option>
           </select>
@@ -42,7 +42,8 @@
         <label class="form-check-label" for="gridCheck">
           Rookie
         </label>
-      </div>    
+      </div>
+      <button type="submit" class="btn btn-info">SUBMIT</button>    
     </div>
   </form>
   <table class="table table-striped">

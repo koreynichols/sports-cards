@@ -1,11 +1,10 @@
-import { TEAMS } from './../mocks/mock-teams';
 import { Component, OnInit } from '@angular/core';
 
 import { CardService } from '../services/card.service';
 import { CardInterface } from '../interfaces/card-interface';
 
 import { SPORTS } from './../mocks/mock-sports';
-
+import { TEAMS } from './../mocks/mock-teams';
 
 @Component({
   selector: 'app-card',
@@ -20,6 +19,7 @@ export class CardComponent implements OnInit {
   isDisabled: Boolean = true;
   selectedSport: String = 'All';
   selectedTeam: String = 'All';
+  searchName: String = '';
 
   constructor(private cardService: CardService) { }
 
@@ -33,12 +33,19 @@ export class CardComponent implements OnInit {
 
   set selectedSportMod(value) {
     this.selectedSport = value;
-    console.log(this.selectedSport);
-    this.getTeamNames(this.selectedSport);
+    this.getTeamNames();
   }
 
-  getTeamNames(sport) {
-    if (sport === 'All') {
+  get selectedTeamMod() {
+    return this.selectedTeam;
+  }
+
+  set selectedTeamMod(value) {
+    this.selectedTeam = value;
+  }
+
+  getTeamNames() {
+    if (this.selectedSport === 'All') {
       this.selectedTeam = 'All';
       this.isDisabled = true;
     } else {
@@ -47,8 +54,17 @@ export class CardComponent implements OnInit {
     }
   }
 
+  filterCards() {
+    const searchFields = {
+      searchName: this.searchName,
+      selectedSport: this.selectedSport,
+      selectedTeam: this.selectedTeam
+    };
+
+    this.cardService.filterCards(searchFields);
+  }
+
   ngOnInit() {
     this.getCards();
-    console.log(this.teams);
   }
 }

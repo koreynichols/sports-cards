@@ -21,6 +21,16 @@ export class CardService {
     return selectedCard;
   }
 
+  filterCards(searchFields) {
+    if (searchFields !== '') {
+      console.log("hello");
+    }
+    console.log(CARDS.filter(card => {
+      if (searchFields.searchName !== '') { return card.firstName.toLowerCase().includes(searchFields.searchName.toLowerCase()); }
+     }));
+    console.log(searchFields);
+  }
+
 /*  getEbayListing() {
     return this.api.get('');
   }
