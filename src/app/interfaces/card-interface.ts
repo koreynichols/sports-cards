@@ -1,7 +1,6 @@
 export interface CardInterface {
    id: number;
-   firstName: string;
-   lastName: string;
+   name: string;
    company: string;
    set: string;
    year: number;

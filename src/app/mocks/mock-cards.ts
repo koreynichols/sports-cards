@@ -3,8 +3,7 @@ import { CardInterface } from './../interfaces/card-interface';
 export const CARDS: CardInterface[] = [
     {
         id: 1,
-        firstName: 'Nolan',
-        lastName: 'Arenado',
+        name: 'Nolan Arenado',
         company: 'Topps',
         set: 'Chrome',
         year: 2013,
@@ -18,8 +17,7 @@ export const CARDS: CardInterface[] = [
     },
     {
         id: 2,
-        firstName: 'Troy',
-        lastName: 'Tulowitzki',
+        name: 'Troy Tulowitzki',
         company: 'Topps',
         set: 'Bowman',
         year: 2006,
@@ -33,8 +31,7 @@ export const CARDS: CardInterface[] = [
     },
     {
         id: 3,
-        firstName: 'Bart',
-        lastName: 'Starr',
+        name: 'Bart Starr',
         company: 'Topps',
         set: '2011',
         year: 2011,
@@ -49,8 +46,7 @@ export const CARDS: CardInterface[] = [
     },
     {
         id: 4,
-        firstName: 'Quincy',
-        lastName: 'Enunwa',
+        name: 'Quincy Enunwa',
         company: 'Panini',
         set: 'Crown Royale',
         year: 2011,
@@ -65,8 +61,7 @@ export const CARDS: CardInterface[] = [
     },
     {
         id: 5,
-        firstName: 'Curtis',
-        lastName: 'Martin',
+        name: 'Curtis Martin',
         company: 'Panini',
         set: 'Playbook',
         year: 2012,
@@ -82,8 +77,7 @@ export const CARDS: CardInterface[] = [
     },
     {
         id: 6,
-        firstName: 'Alshon',
-        lastName: 'Jeffery',
+        name: 'Alshon Jeffery',
         company: 'Topps',
         set: '2012',
         year: 2012,
@@ -98,8 +92,7 @@ export const CARDS: CardInterface[] = [
     },
     {
         id: 7,
-        firstName: 'Paxton',
-        lastName: 'Lynch',
+        name: 'Paxton Lynch',
         company: 'Panini',
         set: 'Prizm',
         year: 2016,
@@ -114,8 +107,7 @@ export const CARDS: CardInterface[] = [
     },
     {
         id: 8,
-        firstName: 'Von',
-        lastName: 'Miller',
+        name: 'Von Miller',
         company: 'Topps',
         set: '2011',
         year: 2011,
@@ -130,8 +122,7 @@ export const CARDS: CardInterface[] = [
     },
     {
         id: 9,
-        firstName: 'Buster',
-        lastName: 'Posey',
+        name: 'Buster Posey',
         company: 'Upper Deck',
         set: '2010',
         year: 2010,
@@ -145,8 +136,7 @@ export const CARDS: CardInterface[] = [
     },
     {
         id: 10,
-        firstName: 'Jimmy',
-        lastName: 'Smith',
+        name: 'Jimmy Smith',
         company: 'Topps',
         set: '2011',
         year: 2011,
