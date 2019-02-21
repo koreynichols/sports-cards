@@ -61,7 +61,7 @@ export class CardComponent implements OnInit {
       selectedTeam: this.selectedTeam
     };
 
-    this.cardService.filterCards(searchFields);
+    this.cards = this.cardService.filterCards(searchFields);
   }
 
   ngOnInit() {

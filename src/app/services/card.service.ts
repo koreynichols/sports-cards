@@ -11,6 +11,8 @@ export class CardService {
 
   constructor(private api: ApiService) { }
 
+  cards: CardInterface[] = CARDS;
+
   getCards(): CardInterface[] {
     return CARDS;
   }
@@ -22,13 +24,41 @@ export class CardService {
   }
 
   filterCards(searchFields) {
-    if (searchFields !== '') {
-      console.log("hello");
+    this.cards = CARDS;
+    this.cards = this.filterByName(searchFields);
+    this.cards = this.filterBySport(searchFields);
+    this.cards = this.filterByTeam(searchFields);
+    return this.cards;
+  }
+
+  filterByName(searchFields) {
+    if (searchFields.searchName === '') {
+      return this.cards;
+    } else {
+      return this.cards.filter(card => {
+        return card.firstName.toLowerCase().includes( searchFields.searchName.toLowerCase());
+      });
     }
-    console.log(CARDS.filter(card => {
-      if (searchFields.searchName !== '') { return card.firstName.toLowerCase().includes(searchFields.searchName.toLowerCase()); }
-     }));
-    console.log(searchFields);
+  }
+
+  filterBySport(searchFields) {
+    if (searchFields.selectedSport === 'All') {
+      return this.cards;
+    } else {
+      return this.cards.filter(card => {
+        return card.sport.toLowerCase().includes( searchFields.selectedSport.toLowerCase());
+      });
+    }
+  }
+
+  filterByTeam(searchFields) {
+    if (searchFields.selectedTeam === 'All') {
+      return this.cards;
+    } else {
+      return this.cards.filter(card => {
+        return card.team.toLowerCase().includes( searchFields.selectedTeam.toLowerCase());
+      });
+    }
   }
 
 /*  getEbayListing() {

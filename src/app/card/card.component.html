@@ -7,18 +7,18 @@
    <div class="form-row">
       <div class="form-group col-md-6">
         <label for="Name">Player Name</label>
-        <input type="text" class="form-control" id="Name" [(ngModel)]="searchName" name="searchName" placeholder="Name">
+        <input type="text" class="form-control" id="Name" [(ngModel)]="searchName" (ngModelChange)="filterCards()" name="searchName" placeholder="Name" >
       </div>
       <div class="form-group col-md-3">
           <label for="inputSport">Sport</label>
-          <select id="inputSport" class="form-control" [(ngModel)]="selectedSportMod" name="selectedSport">
+          <select id="inputSport" class="form-control" [(ngModel)]="selectedSportMod" (change)="filterCards()" name="selectedSport">
             <option selected>All</option>
             <option *ngFor="let sport of sports">{{ sport.sport }}</option>
           </select>
       </div>
       <div class="form-group col-md-3">
           <label for="inputTeam">Team</label>
-          <select id="inputTeam" class="form-control" [(ngModel)]="selectedTeamMod" name="selectedTeam" [disabled]="isDisabled">
+          <select id="inputTeam" class="form-control" [(ngModel)]="selectedTeamMod" (change)="filterCards()" name="selectedTeam" [disabled]="isDisabled">
             <option selected>All</option>
             <option *ngFor="let team of teams">{{ team.teamCity }} {{ team.teamNickname }}</option>
           </select>
@@ -61,7 +61,7 @@
         <td class="align-middle">{{card.id}}</td>
         <td class="align-middle">{{card.firstName}}</td>
         <td class="align-middle">{{card.lastName}}</td>
-        <td class="align-middle">{{card.teamCity}} {{card.teamNickname}}</td>
+        <td class="align-middle">{{card.team}}</td>
         <td class="align-middle"><button class="btn btn-info" [routerLink]="['/card/', card.id]">Details</button></td>
       </tr>
     </tbody>
