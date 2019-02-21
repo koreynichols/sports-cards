@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="text-center">Card List</h1>
   <div class="row">
-    <button class="btn btn-primary mx-auto btn-lg btn-block" [routerLink]="['/create/']">New Card</button>
+    <button class="btn btn-primary mx-auto btn-lg" [routerLink]="['/create/']">New Card</button>
   </div>
   <form>
    <div class="form-row">
@@ -49,8 +49,7 @@
     <thead>
       <tr>
         <td>ID</td>
-        <td>First Name</td>
-        <td>Last Name</td>
+        <td>Player Name</td>
         <td>Team</td>
         <td>More Info</td>
       </tr>
@@ -58,8 +57,7 @@
     <tbody>
       <tr *ngFor="let card of cards">
         <td class="align-middle">{{card.id}}</td>
-        <td class="align-middle">{{card.firstName}}</td>
-        <td class="align-middle">{{card.lastName}}</td>
+        <td class="align-middle">{{card.name}}</td>
         <td class="align-middle">{{card.team}}</td>
         <td class="align-middle"><button class="btn btn-info" [routerLink]="['/card/', card.id]">Details</button></td>
       </tr>

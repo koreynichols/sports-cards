@@ -40,7 +40,7 @@ export class CardService {
       return this.cards;
     } else {
       return this.cards.filter(card => {
-        return card.firstName.toLowerCase().includes( searchFields.searchName.toLowerCase());
+        return card.name.toLowerCase().includes( searchFields.searchName.trim().toLowerCase());
       });
     }
   }
