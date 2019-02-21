@@ -28,6 +28,10 @@ export class CardService {
     this.cards = this.filterByName(searchFields);
     this.cards = this.filterBySport(searchFields);
     this.cards = this.filterByTeam(searchFields);
+    this.cards = this.filterByAuto(searchFields);
+    this.cards = this.filterByRelic(searchFields);
+    this.cards = this.filterByRookie(searchFields);
+    console.log(searchFields);
     return this.cards;
   }
 
@@ -58,6 +62,42 @@ export class CardService {
       return this.cards.filter(card => {
         return card.team.toLowerCase().includes( searchFields.selectedTeam.toLowerCase());
       });
+    }
+  }
+
+  filterByAuto(searchFields) {
+    if (searchFields.isAuto) {
+      return this.cards.filter(card => {
+        if (card.auto) {
+          return card;
+        }
+      });
+    } else {
+      return this.cards;
+    }
+  }
+
+  filterByRelic(searchFields) {
+    if (searchFields.isRelic) {
+      return this.cards.filter(card => {
+        if (card.relic) {
+          return card;
+        }
+      });
+    } else {
+      return this.cards;
+    }
+  }
+
+  filterByRookie(searchFields) {
+    if (searchFields.isRookie) {
+      return this.cards.filter(card => {
+        if (card.rookie) {
+          return card;
+        }
+      });
+    } else {
+      return this.cards;
     }
   }
 

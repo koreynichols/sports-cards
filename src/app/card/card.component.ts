@@ -20,6 +20,9 @@ export class CardComponent implements OnInit {
   selectedSport: String = 'All';
   selectedTeam: String = 'All';
   searchName: String = '';
+  isAuto: Boolean = false;
+  isRelic: Boolean = false;
+  isRookie: Boolean = false;
 
   constructor(private cardService: CardService) { }
 
@@ -43,6 +46,27 @@ export class CardComponent implements OnInit {
   set selectedTeamMod(value) {
     this.selectedTeam = value;
   }
+  get autoMod() {
+    return this.isAuto;
+  }
+
+  set autoMod(value) {
+    this.isAuto = value;
+  }
+  get relicMod() {
+    return this.isRelic;
+  }
+
+  set relicMod(value) {
+    this.isRelic = value;
+  }
+  get rookieMod() {
+    return this.isRookie;
+  }
+
+  set rookieMod(value) {
+    this.isRookie = value;
+  }
 
   getTeamNames() {
     if (this.selectedSport === 'All') {
@@ -58,7 +82,10 @@ export class CardComponent implements OnInit {
     const searchFields = {
       searchName: this.searchName,
       selectedSport: this.selectedSport,
-      selectedTeam: this.selectedTeam
+      selectedTeam: this.selectedTeam,
+      isAuto: this.isAuto,
+      isRelic: this.isRelic,
+      isRookie: this.isRookie
     };
 
     this.cards = this.cardService.filterCards(searchFields);
