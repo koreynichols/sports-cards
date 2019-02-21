@@ -1,12 +1,50 @@
 <div class="container">
   <h1 class="text-center">Card List</h1>
-  <div>
-    <h5>Search For Card</h5>
-    <label for="Name">Name:</label>
-    <input type="text">
-    <label for="Team">Team:</label>
-    <input type="text">
+  <div class="row">
+    <button class="btn btn-primary mx-auto btn-lg btn-block" [routerLink]="['/create/']">New Card</button>
   </div>
+  <form>
+   <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="Name">Player Name</label>
+        <input type="text" class="form-control" id="Name" [(ngModel)]="searchName" (ngModelChange)="filterCards()" name="searchName" placeholder="Name" >
+      </div>
+      <div class="form-group col-md-3">
+          <label for="inputSport">Sport</label>
+          <select id="inputSport" class="form-control" [(ngModel)]="selectedSportMod" (change)="filterCards()" name="selectedSport">
+            <option selected>All</option>
+            <option *ngFor="let sport of sports">{{ sport.sport }}</option>
+          </select>
+      </div>
+      <div class="form-group col-md-3">
+          <label for="inputTeam">Team</label>
+          <select id="inputTeam" class="form-control" [(ngModel)]="selectedTeamMod" (change)="filterCards()" name="selectedTeam" [disabled]="isDisabled">
+            <option selected>All</option>
+            <option *ngFor="let team of teams">{{ team.teamCity }} {{ team.teamNickname }}</option>
+          </select>
+      </div>
+    </div>
+    <div class="form-group form-row">
+      <div class="form-check col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="gridCheck" [(ngModel)]="autoMod" (change)="filterCards()" name="isAuto">
+        <label class="form-check-label" for="gridCheck">
+          Auto
+        </label>
+      </div>
+      <div class="form-check col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="gridCheck" [(ngModel)]="relicMod" (change)="filterCards()" name="isRelic">
+        <label class="form-check-label" for="gridCheck">
+          Relic
+        </label>
+      </div>
+      <div class="form-check col-md-3 offset-md-1">
+        <input class="form-check-input" type="checkbox" id="gridCheck" [(ngModel)]="rookieMod" (change)="filterCards()" name="isRookie">
+        <label class="form-check-label" for="gridCheck">
+          Rookie
+        </label>
+      </div> 
+    </div>
+  </form>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -22,8 +60,8 @@
         <td class="align-middle">{{card.id}}</td>
         <td class="align-middle">{{card.firstName}}</td>
         <td class="align-middle">{{card.lastName}}</td>
-        <td class="align-middle">{{card.teamCity}} {{card.teamNickname}}</td>
-        <td class="align-middle"><button class="btn btn-primary" [routerLink]="['/card/', card.id]">Details</button></td>
+        <td class="align-middle">{{card.team}}</td>
+        <td class="align-middle"><button class="btn btn-info" [routerLink]="['/card/', card.id]">Details</button></td>
       </tr>
     </tbody>
   </table>

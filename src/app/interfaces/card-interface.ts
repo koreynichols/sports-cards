@@ -6,8 +6,7 @@ export interface CardInterface {
    set: string;
    year: number;
    sport: string;
-   teamCity: string;
-   teamNickname: string;
+   team: string;
    rookie: boolean;
    auto: boolean;
    relic: boolean;
