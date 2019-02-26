@@ -56,16 +56,22 @@
                 <option>Yes</option>
               </select>
             </div>
-            <label for="image">Image</label>
-            <div class="custom-file col-md-6">
-              <input type="file" class="custom-file-input" id="customFile">
-              <label class="custom-file-label" for="customFile">Choose file</label>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+              <h6>Image</h6>
             </div>
             <div class="col-md-6">
-              <label for="imagePreview">Image Preview</label>
+              <h6>Image Preview</h6>
             </div>
-            <button class="btn btn-primary">Add Card</button>
+            <div class="col-md-6">
+              <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+            </div>
+            <div class="col-md-6">
+              <img [src]="imgURL" height="200" *ngIf="imgURL">
+            </div>
           </div>
+          <button class="btn btn-primary">Add Card</button>
         </div>
       </div>
     </div>
