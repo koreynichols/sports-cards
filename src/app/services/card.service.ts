@@ -31,7 +31,6 @@ export class CardService {
     this.cards = this.filterByAuto(searchFields);
     this.cards = this.filterByRelic(searchFields);
     this.cards = this.filterByRookie(searchFields);
-    console.log(searchFields);
     return this.cards;
   }
 

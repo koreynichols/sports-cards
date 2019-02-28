@@ -11,7 +11,7 @@
             </div>
             <div class="form-group col-md-3">
               <label for="inputSport">Sport</label>
-              <select id="inputSport" class="form-control" [(ngModel)]="selectedSportMod" name="selectedSport">
+              <select id="inputSport" class="form-control" [(ngModel)]="selectedSport" name="selectedSport" (change)="getTeamNames()">
                 <option selected>All</option>
                 <option *ngFor="let sport of sports">{{ sport.sport }}</option>
               </select>
@@ -31,6 +31,8 @@
               <label for="Name">Card Set</label>
               <input type="text" class="form-control" id="Name" placeholder="Name">
             </div>
+          </div>
+          <div class="form-row">
             <div class="form-group col-md-3">
               <label for="Name">Year</label>
               <input type="text" class="form-control" id="Year" placeholder="Year">
@@ -43,18 +45,35 @@
               </select>
             </div>
             <div class="form-group col-md-3">
-              <label for="inputRelic">Relic</label>
-              <select id="inputRelic" class="form-control" name="relic">
-                <option selected>No</option>
-                <option>Yes</option>
-              </select>
-            </div>
-            <div class="form-group col-md-3">
               <label for="inputRookie">Rookie</label>
               <select id="inputRookie" class="form-control" name="rookie">
                 <option selected>No</option>
                 <option>Yes</option>
               </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="inputRelic">Relic</label>
+              <select id="inputRelic" class="form-control" [(ngModel)]="relic" name="relic">
+                <option selected>No</option>
+                <option>Yes</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3" [hidden]="hasRelic()">
+              <label for="inputRelicType">Relic Type</label>
+              <input type="text" class="form-control" id="inputRelicType" placeholder="Enter Relic Type...">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="inputNumbered">Numbered</label>
+              <select id="inputNumbered" class="form-control" [(ngModel)]="numbered" name="numbered">
+                <option selected>No</option>
+                <option>Yes</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3" [hidden]="isNumbered()">
+              <label for="inputNumberedTo">Numbered To</label>
+              <input type="text" class="form-control" id="inputNumberedTo" placeholder="Enter number...">
             </div>
           </div>
           <div class="form-row">
