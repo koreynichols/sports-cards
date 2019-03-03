@@ -50,8 +50,6 @@ export class CardComponent implements OnInit {
       isRookie: this.isRookie
     };
 
-    console.log(searchFields);
-
     this.cards = this.cardService.filterCards(searchFields);
   }
 
