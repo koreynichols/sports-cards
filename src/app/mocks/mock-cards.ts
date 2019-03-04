@@ -2,7 +2,7 @@ import { CardInterface } from './../interfaces/card-interface';
 
 export const CARDS: CardInterface[] = [
     {
-        id: 1,
+        id: '1',
         name: 'Nolan Arenado',
         company: 'Topps',
         set: 'Chrome',
@@ -16,7 +16,7 @@ export const CARDS: CardInterface[] = [
         image: 'assets/images/nolan-arenado-topps-chrome-2013.jpg'
     },
     {
-        id: 2,
+        id: '2',
         name: 'Troy Tulowitzki',
         company: 'Topps',
         set: 'Bowman',
@@ -30,7 +30,7 @@ export const CARDS: CardInterface[] = [
         image: 'assets/images/troy-tulowitzki-topps-bowman-2006.jpg'
     },
     {
-        id: 3,
+        id: '3',
         name: 'Bart Starr',
         company: 'Topps',
         set: '2011',
@@ -45,7 +45,7 @@ export const CARDS: CardInterface[] = [
         image: 'assets/images/bart-starr-topps-2011.jpg'
     },
     {
-        id: 4,
+        id: '4',
         name: 'Quincy Enunwa',
         company: 'Panini',
         set: 'Crown Royale',
@@ -60,7 +60,7 @@ export const CARDS: CardInterface[] = [
         image: 'assets/images/quincy-enunwa-panini-crown-royale-2011.jpg'
     },
     {
-        id: 5,
+        id: '5',
         name: 'Curtis Martin',
         company: 'Panini',
         set: 'Playbook',
@@ -76,7 +76,7 @@ export const CARDS: CardInterface[] = [
         image: 'assets/images/curtis-martin-panini-playbook-2012.jpg'
     },
     {
-        id: 6,
+        id: '6',
         name: 'Alshon Jeffery',
         company: 'Topps',
         set: '2012',
@@ -91,7 +91,7 @@ export const CARDS: CardInterface[] = [
         image: 'assets/images/alshon-jeffery-topps-2012.jpg'
     },
     {
-        id: 7,
+        id: '7',
         name: 'Paxton Lynch',
         company: 'Panini',
         set: 'Prizm',
@@ -106,7 +106,7 @@ export const CARDS: CardInterface[] = [
         image: 'assets/images/paxton-lynch-panini-prizm-2016.jpg'
     },
     {
-        id: 8,
+        id: '8',
         name: 'Von Miller',
         company: 'Topps',
         set: '2011',
@@ -121,7 +121,7 @@ export const CARDS: CardInterface[] = [
         image: 'assets/images/von-miller-topps-2011.jpg'
     },
     {
-        id: 9,
+        id: '9',
         name: 'Buster Posey',
         company: 'Upper Deck',
         set: '2010',
@@ -135,7 +135,7 @@ export const CARDS: CardInterface[] = [
         image: 'assets/images/buster-posey-upper-deck-2010.jpg'
     },
     {
-        id: 10,
+        id: '10',
         name: 'Jimmy Smith',
         company: 'Topps',
         set: '2011',

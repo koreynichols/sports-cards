@@ -1,5 +1,5 @@
 export interface CardInterface {
-   id: number;
+   id: string;
    name: string;
    company: string;
    set: string;

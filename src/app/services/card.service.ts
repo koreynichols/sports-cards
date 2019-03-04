@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 
 import { CARDS } from '../mocks/mock-cards';
 import { CardInterface } from '../interfaces/card-interface';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardService {
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private firestore: AngularFirestore) { }
 
   cards: CardInterface[] = CARDS;
 
@@ -17,8 +18,25 @@ export class CardService {
     return CARDS;
   }
 
+  getCardsFirestore() {
+    return this.firestore.collection('cards').snapshotChanges();
+  }
+
+  createCardFirestore(card: CardInterface) {
+    return this.firestore.collection('cards').add(card);
+  }
+
+  updateCardFirestore(card: CardInterface) {
+    delete card.id;
+    this.firestore.doc('cards/' + card.id).update(card);
+  }
+
+  deleteCard(cardId: string) {
+    this.firestore.doc('cards/' + cardId).delete();
+  }
+
   getIndividualCard(params: object): CardInterface {
-    const id: number = +params['id'];
+    const id: string = params['id'];
     const selectedCard: CardInterface = CARDS.find( card => card.id === id);
     return selectedCard;
   }
