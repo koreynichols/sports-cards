@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { TEAMS } from '../mocks/mock-teams';
 import { NgForm } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-create-card',
@@ -12,7 +13,12 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class CreateCardComponent implements OnInit {
 
-  constructor(private firestore: AngularFirestore, private cardservice: CardService) { }
+  constructor(private firestore: AngularFirestore,
+              private afStorage: AngularFireStorage,
+              private cardservice: CardService) { }
+
+  ref: AngularFireStorageReference;
+  task: AngularFireUploadTask;
 
   selectedFile: File;
   imagePath;
@@ -73,13 +79,9 @@ export class CreateCardComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    console.log(form);
     const data = Object.assign({}, form.value);
-    delete data.id;
-    if (form.value.id == null) {
-      this.firestore.collection('cards').add(data);
-    } else {
-      this.firestore.doc('cards/' + form.value.id).update(data);
-    }
+    console.log(data);
   }
 
   ngOnInit() {

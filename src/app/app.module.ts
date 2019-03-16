@@ -4,8 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -27,8 +27,8 @@ import { CreateCardComponent } from './create-card/create-card.component';
     HttpClientModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-    AngularFireDatabaseModule
+    AngularFireStorageModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
