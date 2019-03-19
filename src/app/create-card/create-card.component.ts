@@ -3,8 +3,7 @@ import { SPORTS } from './../mocks/mock-sports';
 import { Component, OnInit } from '@angular/core';
 import { TEAMS } from '../mocks/mock-teams';
 import { NgForm } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
+
 
 @Component({
   selector: 'app-create-card',
@@ -13,12 +12,7 @@ import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask 
 })
 export class CreateCardComponent implements OnInit {
 
-  constructor(private firestore: AngularFirestore,
-              private afStorage: AngularFireStorage,
-              private cardservice: CardService) { }
-
-  ref: AngularFireStorageReference;
-  task: AngularFireUploadTask;
+  constructor(private cardservice: CardService) { }
 
   selectedFile: File;
   imagePath;
@@ -26,36 +20,12 @@ export class CreateCardComponent implements OnInit {
   message: string;
   sports = SPORTS;
   teams = TEAMS;
-  isDisabled: Boolean = true;
-  isHidden: Boolean = true;
-  selectedSport: String = 'All';
-  selectedTeam: String = 'All';
-  numbered: String = 'No';
-  relic: String = 'No';
 
   getTeamNames() {
-    if (this.selectedSport === 'All') {
-      this.selectedTeam = 'All';
-      this.isDisabled = true;
+    if (this.cardservice.formData.sport === 'All') {
+      this.cardservice.formData.team = 'All';
     } else {
-      this.isDisabled = false;
-      this.teams = TEAMS.filter(team => team.sport === this.selectedSport);
-    }
-  }
-
-  isNumbered() {
-    if (this.numbered === 'Yes') {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  hasRelic() {
-    if (this.relic === 'Yes') {
-      return false;
-    } else {
-      return true;
+      this.teams = TEAMS.filter(team => team.sport === this.cardservice.formData.sport);
     }
   }
 
@@ -79,12 +49,35 @@ export class CreateCardComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
+    console.log(form.value);
     const data = Object.assign({}, form.value);
     console.log(data);
   }
 
+  resetForm(form?: NgForm) {
+    if (form != null ) {
+      form.resetForm();
+    }
+    this.cardservice.formData = {
+      id: null,
+      playerName: '',
+      cardCompany: '',
+      cardSet: '',
+      year: null,
+      sport: 'All',
+      team: 'All',
+      rookieCard: false,
+      auto: false,
+      relic: false,
+      relicType: '',
+      numbered: false,
+      numberedTo: null,
+      imageLink: ''
+    };
+  }
+
   ngOnInit() {
+    this.resetForm();
   }
 
 }

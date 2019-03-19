@@ -3,16 +3,25 @@ import { Injectable } from '@angular/core';
 
 import { CARDS } from '../mocks/mock-cards';
 import { CardInterface } from '../interfaces/card-interface';
+
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
+import { conditionallyCreateMapObjectLiteral } from '@angular/compiler/src/render3/view/util';
+import { Card } from '../models/card';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardService {
+  formData: Card;
 
-  constructor(private api: ApiService, private firestore: AngularFirestore) { }
+  constructor(private api: ApiService,
+    private firestore: AngularFirestore,
+    private afStorage: AngularFireStorage) { }
 
-  formData: CardInterface;
+  ref: AngularFireStorageReference;
+  task: AngularFireUploadTask;
+
   cards: CardInterface[] = CARDS;
 
   getCards(): CardInterface[] {
@@ -23,8 +32,13 @@ export class CardService {
     return this.firestore.collection('cards').snapshotChanges();
   }
 
-  createCardFirestore(card: CardInterface) {
-    return this.firestore.collection('cards').add(card);
+  createCardFirestore(cardData) {
+    console.log(cardData);
+    //this.firestore.collection('cards').add(card);
+  }
+
+  addImageToFireStorage(imageData) {
+    console.log(imageData);
   }
 
   updateCardFirestore(card: CardInterface) {
@@ -118,9 +132,4 @@ export class CardService {
       return this.cards;
     }
   }
-
-/*  getEbayListing() {
-    return this.api.get('');
-  }
-  */
 }
