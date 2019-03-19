@@ -1,16 +1,16 @@
 export class Card {
    id: string;
-   name: string;
-   company: string;
-   set: string;
+   playerName: string;
+   cardCompany: string;
+   cardSet: string;
    year: number;
    sport: string;
    team: string;
-   rookie: boolean;
+   rookieCard: boolean;
    auto: boolean;
    relic: boolean;
    relicType: string;
    numbered: boolean;
    numberedTo: number;
-   image: string;
+   imageLink: string;
 }

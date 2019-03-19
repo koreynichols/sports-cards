@@ -5,11 +5,11 @@
   <div class="row">
     <div class="col-md-4">
       <div class="img-container image-margin">
-        <img src="{{card.image}}" alt="{{card.name}}" class="img-fluid">
+        <img src="{{card.imageLink}}" alt="{{card.playerName}}" class="img-fluid">
       </div>
     </div>
     <div class="col-md-8">
-      <h1 class="text-center">{{card.name}}</h1>
+      <h1 class="text-center">{{card.playerName}}</h1>
       <h2 class="text-center">{{card.teamCity}} {{card.teamNickname}}</h2>
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -17,9 +17,9 @@
         </div>
         <div class="panel-body">
           <ul>
-            <li>Set - {{card.company}} {{card.set}}</li>
+            <li>Set - {{card.cardCompany}} {{card.cardSet}}</li>
             <li>Year - {{card.year}}</li>
-            <li *ngIf = "card.rookie" >ROOKIE CARD</li>
+            <li *ngIf = "card.rookieCard" >ROOKIE CARD</li>
             <li *ngIf = "card.auto" >AUTO</li>
             <li *ngIf = "card.relic">Relic - {{ card.relicType }}</li>
             <li *ngIf = "card.numbered" >Numbered To {{card.numberedTo}}</li>

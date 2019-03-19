@@ -12,6 +12,7 @@ export class CardService {
 
   constructor(private api: ApiService, private firestore: AngularFirestore) { }
 
+  formData: CardInterface;
   cards: CardInterface[] = CARDS;
 
   getCards(): CardInterface[] {
@@ -57,7 +58,7 @@ export class CardService {
       return this.cards;
     } else {
       return this.cards.filter(card => {
-        return card.name.toLowerCase().includes( searchFields.searchName.trim().toLowerCase());
+        return card.playerName.toLowerCase().includes( searchFields.searchName.trim().toLowerCase());
       });
     }
   }
@@ -109,7 +110,7 @@ export class CardService {
   filterByRookie(searchFields) {
     if (searchFields.isRookie) {
       return this.cards.filter(card => {
-        if (card.rookie) {
+        if (card.rookieCard) {
           return card;
         }
       });
