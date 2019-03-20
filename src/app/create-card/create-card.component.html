@@ -40,15 +40,15 @@
             <div class="form-group col-md-3">
               <label for="inputAuto">Auto</label>
               <select id="inputAuto" class="form-control" [(ngModel)]="cardservice.formData.auto" name="auto">
-                <option value=false selected>No</option>
-                <option value=true>Yes</option>
+                <option [ngValue]='false' selected>No</option>
+                <option [ngValue]='true'>Yes</option>
               </select>
             </div>
             <div class="form-group col-md-3">
               <label for="inputRookie">Rookie</label>
               <select id="inputRookie" class="form-control" [(ngModel)]="cardservice.formData.rookieCard" name="rookieCard">
-                <option value=false selected>No</option>
-                <option value=true>Yes</option>
+                <option [ngValue]='false' selected>No</option>
+                <option [ngValue]='true' >Yes</option>
               </select>
             </div>
           </div>
@@ -56,8 +56,8 @@
             <div class="form-group col-md-3">
               <label for="inputRelic">Relic</label>
               <select id="inputRelic" class="form-control" [(ngModel)]="cardservice.formData.relic" name="relic">
-                <option value=false selected>No</option>
-                <option value=true >Yes</option>
+                <option [ngValue]='false' selected>No</option>
+                <option [ngValue]='true' >Yes</option>
               </select>
             </div>
             <div class="form-group col-md-3" [hidden]="!cardservice.formData.relic">
@@ -67,8 +67,8 @@
             <div class="form-group col-md-3">
               <label for="inputNumbered">Numbered</label>
               <select id="inputNumbered" class="form-control" [(ngModel)]="cardservice.formData.numbered" name="numbered">
-                <option value=false selected>No</option>
-                <option value=true >Yes</option>
+                <option [ngValue]='false' selected>No</option>
+                <option [ngValue]='true' >Yes</option>
               </select>
             </div>
             <div class="form-group col-md-3" [hidden]="!cardservice.formData.numbered">
@@ -84,7 +84,7 @@
               <h6>Image Preview</h6>
             </div>
             <div class="col-md-6">
-              <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+              <input #file type="file"  accept='image/*' (change)="preview(file.files)" />
             </div>
             <div class="col-md-6">
               <img [src]="imgURL" height="200" *ngIf="imgURL">

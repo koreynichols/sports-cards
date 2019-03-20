@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { map } from 'rxjs/operators';
 import { CardService } from '../services/card.service';
 import { CardInterface } from '../interfaces/card-interface';
 
@@ -28,6 +28,15 @@ export class CardComponent implements OnInit {
 
   getCards() {
     this.cards = this.cardService.getCards();
+    this.cardService.getCardsFirestore().subscribe((card: Array<any>) => {
+        //let result: Array<Card> = [];
+        if (card) {
+          card.map(item => {
+            console.log(item.payload.doc.id);
+            console.log(item.payload.doc.data());
+          });
+        }
+      });
   }
 
   getTeamNames() {

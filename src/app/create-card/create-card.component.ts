@@ -30,6 +30,7 @@ export class CreateCardComponent implements OnInit {
   }
 
   preview(files) {
+
     if (files.length === 0) {
       return;
     }
@@ -49,9 +50,12 @@ export class CreateCardComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value);
+    const id = Math.random().toString(36).substring(2);
     const data = Object.assign({}, form.value);
-    console.log(data);
+    data.imageLink = id;
+
+    this.cardservice.createCardFirestore(data);
+    this.cardservice.addImageToFireStorage(this.imagePath, id);
   }
 
   resetForm(form?: NgForm) {

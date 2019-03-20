@@ -33,12 +33,12 @@ export class CardService {
   }
 
   createCardFirestore(cardData) {
-    console.log(cardData);
-    //this.firestore.collection('cards').add(card);
+    this.firestore.collection('cards').add(cardData);
   }
 
-  addImageToFireStorage(imageData) {
-    console.log(imageData);
+  addImageToFireStorage(imageData, id) {
+    this.ref = this.afStorage.ref(id);
+    this.task = this.ref.put(imageData[0]);
   }
 
   updateCardFirestore(card: CardInterface) {
