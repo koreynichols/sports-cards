@@ -33,16 +33,10 @@ export class CardDetailComponent implements OnInit {
         });
       }
     });
-   /* return this.route.params.subscribe( params => {
-      this.card = this.cardService.getIndividualCard(params);
-    });*/
   }
 
   getEbayListings() {
-    /*this.cardService.getEbayListing().subscribe((cards) => {
-      console.log(cards);
-    });
-    */
+
   }
 
   ngOnInit() {
