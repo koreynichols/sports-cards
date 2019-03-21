@@ -12,13 +12,26 @@ import { CardService } from '../services/card.service';
 export class CardDetailComponent implements OnInit {
 
   card: CardInterface;
+  id: String;
+  result: CardInterface[];
 
   constructor(private cardService: CardService, private route: ActivatedRoute) { }
 
   getCard() {
-    return this.route.params.subscribe( params => {
-      this.card = this.cardService.getIndividualCard(params);
+    this.route.params.subscribe(params => {
+      this.id = params.id;
     });
+    this.cardService.getIndividualCardFirestore(this.id).subscribe(card => {
+      if (card) {
+        console.log(card);
+        card.map( item => {
+          console.log(item);
+        });
+      }
+    });
+    /*return this.route.params.subscribe( params => {
+      this.card = this.cardService.getIndividualCard(params);
+    });*/
   }
 
   getEbayListings() {

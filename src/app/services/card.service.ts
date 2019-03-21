@@ -6,7 +6,6 @@ import { CardInterface } from '../interfaces/card-interface';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
-import { conditionallyCreateMapObjectLiteral } from '@angular/compiler/src/render3/view/util';
 import { Card } from '../models/card';
 
 @Injectable({
@@ -30,6 +29,10 @@ export class CardService {
 
   getCardsFirestore() {
     return this.firestore.collection('cards').snapshotChanges();
+  }
+
+  getIndividualCardFirestore(id: String) {
+    return this.firestore.collection('cards', ref => ref.where('id', '==', id)).snapshotChanges();
   }
 
   createCardFirestore(cardData) {

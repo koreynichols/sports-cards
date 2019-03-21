@@ -57,7 +57,6 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <td>ID</td>
         <td>Player Name</td>
         <td>Team</td>
         <td>More Info</td>
@@ -65,7 +64,6 @@
     </thead>
     <tbody>
       <tr *ngFor="let card of cards">
-        <td class="align-middle">{{card.id}}</td>
         <td class="align-middle">{{card.playerName}}</td>
         <td class="align-middle">{{card.team}}</td>
         <td class="align-middle"><button class="btn btn-info" [routerLink]="['/card/', card.id]">Details</button></td>
