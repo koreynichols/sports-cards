@@ -32,7 +32,7 @@ export class CardService {
   }
 
   getIndividualCardFirestore(id: String) {
-    return this.firestore.collection('cards', ref => ref.where('id', '==', id)).snapshotChanges();
+    return this.firestore.doc('cards/' + id).get();
   }
 
   createCardFirestore(cardData) {
