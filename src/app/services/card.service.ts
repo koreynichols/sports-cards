@@ -4,12 +4,22 @@ import { Injectable } from '@angular/core';
 import { CARDS } from '../mocks/mock-cards';
 import { CardInterface } from '../interfaces/card-interface';
 
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
+import { Card } from '../models/card';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CardService {
+  formData: Card;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService,
+    private firestore: AngularFirestore,
+    private afStorage: AngularFireStorage) { }
+
+  ref: AngularFireStorageReference;
+  task: AngularFireUploadTask;
 
   cards: CardInterface[] = CARDS;
 
@@ -17,8 +27,34 @@ export class CardService {
     return CARDS;
   }
 
+  getCardsFirestore() {
+    return this.firestore.collection('cards').snapshotChanges();
+  }
+
+  getIndividualCardFirestore(id: String) {
+    return this.firestore.doc('cards/' + id).get();
+  }
+
+  createCardFirestore(cardData) {
+    this.firestore.collection('cards').add(cardData);
+  }
+
+  addImageToFireStorage(imageData, id) {
+    this.ref = this.afStorage.ref(id);
+    this.task = this.ref.put(imageData[0]);
+  }
+
+  updateCardFirestore(card: CardInterface) {
+    delete card.id;
+    this.firestore.doc('cards/' + card.id).update(card);
+  }
+
+  deleteCard(cardId: string) {
+    this.firestore.doc('cards/' + cardId).delete();
+  }
+
   getIndividualCard(params: object): CardInterface {
-    const id: number = +params['id'];
+    const id: string = params['id'];
     const selectedCard: CardInterface = CARDS.find( card => card.id === id);
     return selectedCard;
   }
@@ -31,7 +67,6 @@ export class CardService {
     this.cards = this.filterByAuto(searchFields);
     this.cards = this.filterByRelic(searchFields);
     this.cards = this.filterByRookie(searchFields);
-    console.log(searchFields);
     return this.cards;
   }
 
@@ -40,7 +75,7 @@ export class CardService {
       return this.cards;
     } else {
       return this.cards.filter(card => {
-        return card.name.toLowerCase().includes( searchFields.searchName.trim().toLowerCase());
+        return card.playerName.toLowerCase().includes( searchFields.searchName.trim().toLowerCase());
       });
     }
   }
@@ -92,7 +127,7 @@ export class CardService {
   filterByRookie(searchFields) {
     if (searchFields.isRookie) {
       return this.cards.filter(card => {
-        if (card.rookie) {
+        if (card.rookieCard) {
           return card;
         }
       });
@@ -100,9 +135,4 @@ export class CardService {
       return this.cards;
     }
   }
-
-/*  getEbayListing() {
-    return this.api.get('');
-  }
-  */
 }

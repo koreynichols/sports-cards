@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { CardService } from '../services/card.service';
 import { CardInterface } from '../interfaces/card-interface';
 
@@ -24,48 +23,21 @@ export class CardComponent implements OnInit {
   isRelic: Boolean = false;
   isRookie: Boolean = false;
 
+  result: CardInterface[];
+
+
   constructor(private cardService: CardService) { }
 
   getCards() {
-    this.cards = this.cardService.getCards();
-  }
-
-  get selectedSportMod() {
-    return this.selectedSport;
-  }
-
-  set selectedSportMod(value) {
-    this.selectedSport = value;
-    this.getTeamNames();
-  }
-
-  get selectedTeamMod() {
-    return this.selectedTeam;
-  }
-
-  set selectedTeamMod(value) {
-    this.selectedTeam = value;
-  }
-  get autoMod() {
-    return this.isAuto;
-  }
-
-  set autoMod(value) {
-    this.isAuto = value;
-  }
-  get relicMod() {
-    return this.isRelic;
-  }
-
-  set relicMod(value) {
-    this.isRelic = value;
-  }
-  get rookieMod() {
-    return this.isRookie;
-  }
-
-  set rookieMod(value) {
-    this.isRookie = value;
+    this.cardService.getCardsFirestore().subscribe(card => {
+        if (card) {
+          this.cards = card.map(item => {
+            return {
+              id: item.payload.doc.id,
+              ...item.payload.doc.data()
+            } as CardInterface;
+          });        }
+      });
   }
 
   getTeamNames() {
