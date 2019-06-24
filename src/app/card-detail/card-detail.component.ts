@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { CardInterface } from '../interfaces/card-interface';
 import { CardService } from '../services/card.service';
@@ -16,6 +17,9 @@ export class CardDetailComponent implements OnInit {
   id: String;
   result: CardInterface[];
   ref: AngularFireStorageReference;
+  downloadURL: Observable<string>;
+
+
   constructor(private cardService: CardService,
               private route: ActivatedRoute,
               private afStorage: AngularFireStorage) { }
@@ -28,9 +32,7 @@ export class CardDetailComponent implements OnInit {
       if (card) {
         this.card = card.data();
         this.ref = this.afStorage.ref(this.card.imageLink);
-        this.ref.getDownloadURL().subscribe(image => {
-          this.card.imageLink = image;
-        });
+        this.downloadURL = this.ref.getDownloadURL();
       }
     });
   }

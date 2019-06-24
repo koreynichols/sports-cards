@@ -4,8 +4,8 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <div class="img-container image-margin">
-        <img src="{{card.imageLink}}" alt="{{card.playerName}}" class="img-fluid">
+      <div class="img-container image-margin" *ngIf="downloadURL | async; let downloadSrc">
+        <img src="{{downloadSrc}}" alt="{{card.playerName}}" class="img-fluid">
       </div>
     </div>
     <div class="col-md-8">

@@ -13,6 +13,7 @@ import { TEAMS } from './../mocks/mock-teams';
 export class CardComponent implements OnInit {
 
   cards: CardInterface[];
+  originalCards: CardInterface[];
   sports = SPORTS;
   teams = TEAMS;
   isDisabled: Boolean = true;
@@ -36,7 +37,9 @@ export class CardComponent implements OnInit {
               id: item.payload.doc.id,
               ...item.payload.doc.data()
             } as CardInterface;
-          });        }
+          });
+          this.originalCards = this.cards;
+        }
       });
   }
 
@@ -60,7 +63,80 @@ export class CardComponent implements OnInit {
       isRookie: this.isRookie
     };
 
-    this.cards = this.cardService.filterCards(searchFields);
+    this.cards = this.originalCards;
+    this.cards = this.filterByName(searchFields);
+    this.cards = this.filterBySport(searchFields);
+    this.cards = this.filterByTeam(searchFields);
+    this.cards = this.filterByAuto(searchFields);
+    this.cards = this.filterByRelic(searchFields);
+    this.cards = this.filterByRookie(searchFields);
+    return this.cards;
+  }
+
+  filterByName(searchFields) {
+    if (searchFields.searchName === '') {
+      return this.cards;
+    } else {
+      return this.cards.filter(card => {
+        return card.playerName.toLowerCase().includes( searchFields.searchName.trim().toLowerCase());
+      });
+    }
+  }
+
+  filterBySport(searchFields) {
+    if (searchFields.selectedSport === 'All') {
+      return this.cards;
+    } else {
+      return this.cards.filter(card => {
+        return card.sport.toLowerCase().includes( searchFields.selectedSport.toLowerCase());
+      });
+    }
+  }
+
+  filterByTeam(searchFields) {
+    if (searchFields.selectedTeam === 'All') {
+      return this.cards;
+    } else {
+      return this.cards.filter(card => {
+        return card.team.toLowerCase().includes( searchFields.selectedTeam.toLowerCase());
+      });
+    }
+  }
+
+  filterByAuto(searchFields) {
+    if (searchFields.isAuto) {
+      return this.cards.filter(card => {
+        if (card.auto) {
+          return card;
+        }
+      });
+    } else {
+      return this.cards;
+    }
+  }
+
+  filterByRelic(searchFields) {
+    if (searchFields.isRelic) {
+      return this.cards.filter(card => {
+        if (card.relic) {
+          return card;
+        }
+      });
+    } else {
+      return this.cards;
+    }
+  }
+
+  filterByRookie(searchFields) {
+    if (searchFields.isRookie) {
+      return this.cards.filter(card => {
+        if (card.rookieCard) {
+          return card;
+        }
+      });
+    } else {
+      return this.cards;
+    }
   }
 
   ngOnInit() {
